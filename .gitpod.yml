@@ -1,5 +1,5 @@
 tasks:
   - init: |
-      npm 1
+      npm i
     command: |
       npm run watch:sass
