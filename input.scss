@@ -1,3 +1,39 @@
+body {
+  color: white;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.overlfow-hidden {
+  overflow: hidden;
+}
+
+$borderRadiusBase: 2px;
+
+@for $i from 0 through 6 {
+  .rounded-#{$i} {
+    border-radius: $borderRadiusBase * $i;
+  }
+}
+
 .d-flex {
   display: flex;
   flex-direction: row;
@@ -12,35 +48,51 @@ $baseFontSize: 1.5rem;
   }
 }
 
-$baseSize: 5px;
+$baseSize: 8px;
 
-@for $i from 0 through 5 {
-  .m-#{$i} {
-    margin: $baseSize * $i;
+@for $i from 1 through 5 {
+  .p-#{$i} {
+    padding: $baseSize * $i;
   }
-  .mb-#{$i} {
-    margin-bottom: $baseSize * $i;
+  .pb-#{$i} {
+    padding-bottom: $baseSize * $i;
   }
-  .mt-#{$i} {
-    margin-top: $baseSize * $i;
+  .pt-#{$i} {
+    padding-top: $baseSize * $i;
   }
-  .ms-#{$i} {
-    margin-left: $baseSize * $i;
+  .ps-#{$i} {
+    padding-left: $baseSize * $i;
   }
-  .ms-#{$i} {
-    margin-right: $baseSize * $i;
+  .ps-#{$i} {
+    padding-right: $baseSize * $i;
   }
-  .mx-#{$i} {
-    margin-left: $baseSize * $i;
-    margin-right: $baseSize * $i;
+  .px-#{$i} {
+    padding-left: $baseSize * $i;
+    padding-right: $baseSize * $i;
   }
-  .my-#{$i} {
-    margin-top: $baseSize * $i;
-    margin-bottom: $baseSize * $i;
+  .py-#{$i} {
+    padding-top: $baseSize * $i;
+    padding-bottom: $baseSize * $i;
   }
 }
 .flex-column {
   flex-direction: column;
+}
+
+$palette: (
+  midnightblue: #1b1937,
+  darkslateblue: #5f3158,
+  indianred: #a54c64,
+  white: #fff,
+);
+
+@each $name, $value in $palette {
+  .color-#{$name} {
+    color: $value;
+  }
+  .bg-#{$name} {
+    background-color: $value;
+  }
 }
 
 $breakpoints: (
@@ -70,13 +122,23 @@ $breakpoints: (
       align-items: start;
     }
   }
-}
-
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    width: 100% / 12 * $i;
+  @for $i from 0 through 5 {
+    .mb-#{$name}-#{$i} {
+      @media only screen and (min-width: $value) {
+        margin-bottom: 100% / 12 * $i;
+      }
+    }
   }
 }
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
 
 @each $name, $value, $index in $breakpoints {
   @for $i from 1 through 12 {
@@ -97,4 +159,8 @@ $breakpoints: (
 
 .fw-bold {
   font-weight: bold;
+}
+
+.justify-content-between {
+  justify-content: space-between;
 }
